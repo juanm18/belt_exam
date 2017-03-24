@@ -1,0 +1,15 @@
+<div class="routes">
+  <a href="/songs">Home</a> | <a href="/logout">Log Out</a>
+</div>
+<h3><%=@user.first_name%> <%=@user.last_name%>'s Playlist</h3>
+
+<div class="playlist">
+  <%@my_songs.each do |s|%>
+   <ul>
+     <%if s.song.title == s.song.title%>
+     <li><%=s.song.artist%> | <%=s.song.title%> Times Added:<%=@times_added.count%></li>
+     <%else%>
+     <%end%>
+   </ul>
+  <%end%>
+</div>

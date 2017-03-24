@@ -1,0 +1,12 @@
+<div class="routes">
+  <a href="/songs">Home</a> | <a href="/logout">Log Out</a>
+</div>
+<h1>Others who added <%=@song.artist%> - <%=@song.title%></h1>
+
+<div class="UserAddedSong">
+<%@users.distinct.each do |u|%>
+  <ul>
+    <li> <a href="/users/<%=u.user.id%>"><%=u.user.first_name%></a> | <%=u.user.songs.select{|song| song.id == @song.id}.size%></li>
+  </ul>
+<%end%>
+</div>

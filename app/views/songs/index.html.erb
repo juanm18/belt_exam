@@ -1,0 +1,24 @@
+<div class="routes">
+  <a href="/logout">Log Out</a>
+</div>
+<h1>Welcome <%=@user.first_name%></h1>
+<h3>All songs in your Hub:</h3>
+<div class="listOfSongs">
+  <%@songs.each do |s|%>
+  <ul>
+    <li><%=s.artist%> | <a href="/songs/<%=s.id%>"><%=s.title%></a> | Times Added: <%=s.count%> | <%if Playlist.exists?(song_id: params[:id], user_id: session[:user_id])%> Added <%else%><a href="/songs/<%=s.id%>/add">Add</a><%end%></li>
+  </ul>
+  <%end%>
+
+</div>
+<div class="addSong">
+  <div class="FlashMessage">
+    <%=flash[:songError]%>
+  </div>
+  <form class="" action="/songs/create" method="post">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    Title: <input type="text" name="title" value="">
+    Artist: <input type="text" name="artist" value="">
+    <input type="submit" name="" value="Add Song">
+  </form>
+</div>
